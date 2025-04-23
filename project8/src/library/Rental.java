@@ -1,6 +1,8 @@
 package library;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * A rental is any item that is being rented from a public library
@@ -20,8 +22,34 @@ public abstract class Rental implements Item{
 		dueDate = givenDueDate;
 		checkedOutTo = renter;
 	}
-
-	public abstract void checkOut(Patron p, Date now);
+	
+	public void checkOut(Patron p, Date now, int days)
+	  {
+	    if (!isCheckedOut())
+	    {
+	      int checkOutDays = days;
+	      
+	      // use a GregorianCalendar to figure out the Date corresponding to
+	      // midnight, a given number of days from now
+	      GregorianCalendar cal = new GregorianCalendar();
+	      cal.setTime(now);
+	      cal.add(Calendar.DAY_OF_YEAR, checkOutDays);
+	      
+	      // always set to 11:59:59 pm on the day it's due
+	      cal.set(Calendar.HOUR_OF_DAY, 23);
+	      cal.set(Calendar.MINUTE, 59);
+	      cal.set(Calendar.SECOND, 59);     
+	      
+	      // convert back to Date object
+	      dueDate = cal.getTime();
+	      
+	      checkedOutTo = p;      
+	    }
+	  }
+	
+//	public void CheckOutDays(int days) {
+//		checkOut(p,now,days);
+//	}
 
 	public void checkIn()
 	  {

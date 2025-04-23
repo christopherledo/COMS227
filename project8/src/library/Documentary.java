@@ -74,6 +74,10 @@ public class Documentary extends Rental
       setPatron(p);      
     }
   }
+  
+//  public void checkOut(Patron p, Date now, int days) {
+//	  
+//  }
 
   @Override
   public void checkIn()
