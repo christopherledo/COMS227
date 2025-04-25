@@ -31,7 +31,7 @@ public class Boulder {
 	 */
 	public Boulder(int firstRow, int firstCol, int length, Orientation orientation) {
 		initRow = firstRow;
-		initRow = firstCol;
+		initCol = firstCol;
 		this.firstRow = firstRow;
 		this.firstCol = firstCol;
 		this.length = length;
@@ -121,6 +121,10 @@ public class Boulder {
 		return length;
 	}
 	
+	/**
+	 * Increases the length of the boulder by 1 unit
+	 * @param length the length of the boulder
+	 */
 	public void incLength() {
 		length++;
 	}

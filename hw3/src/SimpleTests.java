@@ -25,7 +25,7 @@ public class SimpleTests {
 			{ new Cell(2, 0, WALL), new Cell(2, 1, GROUND), new Cell(2, 2, GROUND), new Cell(2, 3, GROUND), new Cell(2, 4, EXIT) },
 			{ new Cell(3, 0, WALL), new Cell(3, 1, GROUND), new Cell(3, 2, GROUND), new Cell(3, 3, GROUND), new Cell(3, 4, WALL) },
 			{ new Cell(4, 0, WALL), new Cell(4, 1, WALL), new Cell(4, 2, WALL), new Cell(4, 3, WALL), new Cell(4, 4, WALL) } };
-
+	
 	private static ArrayList<Boulder> makeTest1Boulders() {
 		ArrayList<Boulder> boulders = new ArrayList<Boulder>();
 		boulders.add(new Boulder(2, 1, 2, HORIZONTAL));

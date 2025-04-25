@@ -35,7 +35,18 @@ public class GridUtil {
 		Cell[][] cell = new Cell[height][width];
 		for(int i = 0; i < height; ++i) {
 			for (int j = 0; j < width; ++j) {
-				cell[i][j] = new Cell(i, j, GROUND);
+				if(desc[i][j] == ".") {
+					cell[i][j] = new Cell(i, j, GROUND);
+				}
+				else if(desc[i][j] == "*") {
+					cell[i][j] = new Cell(i, j, WALL);
+				}
+				else if(desc[i][j] == "e") {
+					cell[i][j] = new Cell(i, j, EXIT);
+				}
+				else {
+					cell[i][j] = new Cell(i, j, GROUND); //other characters correspond to a boulder placed on GROUND
+				}
 			}
 		}
 		return cell;
@@ -75,14 +86,13 @@ public class GridUtil {
 				}
 				
 				else if (desc[i][j] == "#") { 
-					boulders.get(numBoulders).incLength();
+					boulders.get(numBoulders).incLength(); 
 				}
 				
 				else if (desc[i][j] == "v" || desc[i][j] == "]") {
 					boulders.get(numBoulders).incLength();
 					numBoulders++;
 				}
-						
 			}
 		}
 		return boulders;
